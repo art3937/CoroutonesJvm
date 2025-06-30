@@ -63,7 +63,7 @@ import kotlin.coroutines.suspendCoroutine
                     val posts = getPosts(client)
                         .map { post ->
                             async {
-                                PostWithComments( post, getComments(client, post.authorId),getAuthor(client, post.authorId))
+                                PostWithComments( post, getComments(client, post.id),getAuthor(client, post.authorId))
                             }
                         }.awaitAll()
                     posts.forEach { println(it) }
